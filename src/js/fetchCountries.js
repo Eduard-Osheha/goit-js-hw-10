@@ -1,4 +1,5 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 Notify.init({
   width: '500px',
   position: 'center-top',
@@ -12,8 +13,9 @@ async function fetchCountries(searchedCountry) {
     .then(response => {
       if (response.status === 404 || !response.ok) {
         throw new Error(
-          Notify.failure('Oops, there is no country with that name')
+          Notify.failure('Oops, there is no country with that name')          
         );
+     
       } else {
           return response.json();
       }

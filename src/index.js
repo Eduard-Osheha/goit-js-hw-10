@@ -37,15 +37,20 @@ function onInputEnterText(e){
      } else if(countries.length >= 2 && countries.length < 10 ) {
      const listMurkup = countries.reduce((murkup, country) => createMarkupList(country) + murkup,''
      );
+     clearPage()
      updateCountryList(listMurkup)
 
     } else {  
       const cardMurkup = countries.reduce((murkup, country) => createMarkupForOneElement(country) + murkup,''
       );
+      clearPage()
       updateCountryCard(cardMurkup)  
   } 
 })
-.catch(error => console.log(error))
+.catch(error => {
+  console.log(error);
+  clearPage();
+})
 }}
 
 function updateCountryCard (cardMurkup) {
@@ -57,7 +62,7 @@ function updateCountryList (listMurkup) {
   countryList.innerHTML = listMurkup;
 }
 
-function clearPage (){
+ function clearPage (){  
   countryList.innerHTML ="";
   countryInfo.innerHTML = "";
 }

@@ -12,7 +12,7 @@
   }
 
   function createMarkupList ({name, flags}) {
-      return ` <p class="country-name">
+      return `<p class="country-name">
   <img src=${flags.svg} class="country-flag" width=35px height = 25px/> ${name}</p>
   `}
 
