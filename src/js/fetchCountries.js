@@ -1,26 +1,24 @@
-import onError from '../index.js';
-import { name } from '../index.js';
-
-// export default function fetchCountries(name) {
-//     const URL = `https://restcountries.com/v3.1/name/${name}?fields=name,flags,capital,languages,population`;
-//         return fetch(URL)       
-//     }
-
-export default function fetchCountries(name) {
- return fetch(`"https://restcountries.com/v3.1/name/${name}"`)
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+Notify.init({
+  width: '500px',
+  position: 'center-top',
+  closeButton: false,
+  });
+  
+async function fetchCountries(searchedCountry) {
+    return fetch(
+    `https://restcountries.com/v2/name/${searchedCountry}?fields=name,capital,population,flags,languages`
+  )
     .then(response => {
-      return response.json();
+      if (response.status === 404 || !response.ok) {
+        throw new Error(
+          Notify.failure('Oops, there is no country with that name')
+        );
+      } else {
+          return response.json();
+      }
     })
-    .then(data => {
-      const { name, capital, population, flags, languages } = data[0];
-
-      console.log(name.official),
-        console.log(flags.svg),
-        console.log(capital[0]),
-        console.log(population),
-        console.log(Object.values(languages).join(', '));
-      
-    })
-    .catch(onError);
+    .catch(error => console.log(error));
 }
 
+export default fetchCountries;

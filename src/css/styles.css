@@ -13,8 +13,25 @@ body {
 }
 
 #search-box {
+  position: absolute;
+  top: 100px;
+  left: 45%;
+
   font: inherit;
-  padding: 8px;
+  padding: 10px;
   max-width: 320px;
-  margin-bottom: 16px;
+  margin-bottom: 16px; 
+  border-radius: 15px;
+  border: 1px solid #73AD21;
+}
+
+.country-card {
+  position: absolute;
+  top: 150px;
+  left: 45%;
+}
+.country-list {
+  position: absolute;
+  top: 150px;
+  left: 43vw;
 }
